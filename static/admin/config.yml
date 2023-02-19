@@ -2,7 +2,6 @@ backend:
   name: git-gateway
   branch: main
 
-publish_mode: editorial_workflow
 
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
@@ -23,12 +22,29 @@ collections:
             name: description
             label: Description
             required: true
-          - widget: select
-            name: palette
-            label: Color Palette
+  - name: projects
+    label: Projects
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    files:
+      - name: project
+        label: Project
+        file: /src/projects/
+        fields:
+          - widget: boolean
+            name: new
+            label: new
+            default: false
+          - widget: string
+            name: title
+            label: title of project
             required: true
-            hint: The color palette used for the website.
-            options:
-              - Blue
-              - Green
-              - Black & White
+          - widget: list
+            name: tags
+            label: tags
+            default: ["graphic work"]
+          - widget: markdown
+            name: description
+            label: Description
+            required: true
