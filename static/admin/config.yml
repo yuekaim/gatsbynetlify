@@ -1,7 +1,6 @@
 backend:
   name: git-gateway
-  repo: yuekaim/gatsbynetlify
-  branch: master # Change to your production branch
+  branch: main
 
 publish_mode: editorial_workflow
 
