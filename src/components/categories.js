@@ -1,33 +1,38 @@
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 
 import Category from "../components/category"
 
-const Categories = () => {
-    const categories = useStaticQuery(graphql`
-        query MyQuery {
-            allMarkdownRemark {
-                nodes {
-                    frontmatter {
-                        tags
-                    }
-                }
-            }
-            }
-    `)
+const ListCategories = (props) => {
     
-    // const projects = categories.nodes
+    const projects = props.data.allMarkdownRemark.nodes
 
     return (
         <div id="categories">
-            test here
             {projects.map(
                 (project) => {
-                    <Category category="test"/>
+                    <Category category={project.frontmatter.tags} />
                 }
             )}
         </div>
     )
 }
 
-export default Categories
+export default function Categories() {
+    return(
+        <StaticQuery
+            query={graphql`
+                query categoriesQuery {
+                    allMarkdownRemark {
+                        nodes {
+                            frontmatter {
+                                tags
+                            }
+                        }
+                    }
+                }
+            `}
+        render={(data) => <ListCategories data={data}/>}
+        />
+    );
+}

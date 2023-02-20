@@ -23,9 +23,9 @@ collections:
             name: description
             label: Description
             required: true
-  - name: projects
-    label: Projects
-    folder: /content/projects/
+  - name: graphic
+    label: Graphic Work
+    folder: /content/graphic/
     create: true
     extension: md
     slug: '{{slug}}'
@@ -39,10 +39,26 @@ collections:
         name: new
         label: new
         default: false
-      - widget: list
-        name: tags
-        label: tags
-        default: ["graphic work"]
+      - widget: markdown
+        name: description
+        label: Description
+        required: true
+  - name: video
+    label: Video
+    folder: /content/video/
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    file: '{{slug}}'
+    fields:
+      - widget: string
+        name: title
+        label: title of project
+        required: true
+      - widget: boolean
+        name: new
+        label: new
+        default: false
       - widget: markdown
         name: description
         label: Description
