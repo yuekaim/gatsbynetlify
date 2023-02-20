@@ -1,42 +1,19 @@
 import * as React from "react"
-import { graphql } from "gatsby"
 
 import Seo from "../components/seo"
+import Categories from "../components/categories"
 
-const BlogIndex = ({data}) => {
-  const projects = data.allMarkdownRemark.nodes;
-  
-  return(
-    <ul>
-      {projects.map((project) => {
-        const title = project.frontmatter.title
-        return (
-          <li>
-            {title}
-          </li>
-        )
-      })}
-    </ul>
+
+const IndexPage = () => {
+  return (
+    <main>
+      <Categories />
+      <h1>Welcome to my Gatsby site!</h1>
+      <p>I'm making this by following the Gatsby Tutorial.</p>
+    </main>
   )
 }
 
-export default BlogIndex
+export default IndexPage
+export const Head = () => <Seo title="Rundong" />
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="All posts" />
-
-export const pageQuery = graphql`
-  query MyQuery {
-    allMarkdownRemark {
-      nodes {
-        frontmatter {
-          title
-        }
-      }
-    }
-  }
-`

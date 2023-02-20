@@ -2,9 +2,10 @@ backend:
   name: git-gateway
   branch: main
 
+publish_mode: editorial_workflow
 
-media_folder: "static/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "/src/images"
+public_folder: "/images"
 
 collections:
   - name: config
@@ -24,27 +25,25 @@ collections:
             required: true
   - name: projects
     label: Projects
+    folder: /content/projects/
     create: true
     extension: md
     slug: '{{slug}}'
-    files:
-      - name: project
-        label: Project
-        file: /src/projects/
-        fields:
-          - widget: boolean
-            name: new
-            label: new
-            default: false
-          - widget: string
-            name: title
-            label: title of project
-            required: true
-          - widget: list
-            name: tags
-            label: tags
-            default: ["graphic work"]
-          - widget: markdown
-            name: description
-            label: Description
-            required: true
+    file: '{{slug}}'
+    fields:
+      - widget: string
+        name: title
+        label: title of project
+        required: true
+      - widget: boolean
+        name: new
+        label: new
+        default: false
+      - widget: list
+        name: tags
+        label: tags
+        default: ["graphic work"]
+      - widget: markdown
+        name: description
+        label: Description
+        required: true
