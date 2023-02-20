@@ -4,15 +4,24 @@ import { StaticQuery, graphql } from "gatsby"
 import Category from "../components/category"
 
 const ListCategories = (props) => {
-    
+    let tagsList = []
     const projects = props.data.allMarkdownRemark.edges
+    projects.forEach((project) => {
+        let tags = project.node.frontmatter.tags
+        tags.forEach((tag) => {
+            if (!tagsList.includes(tag)) {
+                tagsList.push(tag);
+            }
+        })
+    });
 
     return (
         <div id="categories">
-            {projects.map(
-                (project) => {
-                    <Category category={project.frontmatter.tags} />
-                }
+            {tagsList.map(
+                (tag) => 
+                    <div>
+                        <Category category={tag} />
+                    </div>
             )}
         </div>
     )
