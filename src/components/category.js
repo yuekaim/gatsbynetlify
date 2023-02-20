@@ -2,7 +2,7 @@ import * as React from "react"
 
 const Category = (props) => {
     return (
-        <div>{props.category}</div>
+        <div id={props.category}>{props.category}</div>
     )
 }
 

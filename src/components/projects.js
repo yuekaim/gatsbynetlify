@@ -1,32 +1,27 @@
 import * as React from "react"
 import { StaticQuery, graphql } from "gatsby"
 
-import Category from "../components/category"
-
-const ListCategories = (props) => {
-    let tagsList = []
+const ListProjects = (props) => {
+    let titles = []
     const projects = props.data.allMarkdownRemark.edges
     // get rid of duplicates
     projects.forEach((project) => {
-        let tags = project.node.frontmatter.tags
-        tagsList.forEach((tag) => {
-            if (!tagsList.includes(tag)) {
-                tagsList.push(tag);
-            }
-        })
+        let title = project.node.frontmatter.title
+        titles.push(title)
     });
 
     return (
         <div id="categories">
-            {tagsList.map(
-                (tag) => 
-                    <Category category={tag} />
+            {titles.map(
+                (title) => 
+                    <div>{title}</div>
             )}
         </div>
     )
 }
 
-export default function Categories() {
+
+export default function Projects() {
     return(
         <StaticQuery
             query={graphql`
@@ -35,14 +30,16 @@ export default function Categories() {
                         edges {
                           node {
                             frontmatter {
-                              tags
+                                tags
+                                title
+                                new
                             }
                           }
                         }
                     }
                 }
             `}
-        render={(data) => <ListCategories data={data}/>}
+        render={(data) => <ListProjects data={data}/>}
         />
     );
 }

@@ -42,7 +42,7 @@ collections:
       - widget: list
         name: tags
         label: tags
-        default: ["graphic work"]
+        default: ["graphic-work"]
       - widget: markdown
         name: description
         label: Description
