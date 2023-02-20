@@ -2,6 +2,6 @@
 title: here is another one
 new: false
 tags:
-  - other
+  - video
 description: t﻿est content 3
 ---
