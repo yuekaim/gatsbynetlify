@@ -2,6 +2,6 @@
 title: here is another one
 new: false
 tags:
-  - graphic-work
+  - other
 description: t﻿est content 3
 ---
