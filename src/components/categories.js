@@ -5,7 +5,7 @@ import Category from "../components/category"
 
 const ListCategories = (props) => {
     
-    const projects = props.data.allMarkdownRemark.nodes
+    const projects = props.data.allMarkdownRemark.edges
 
     return (
         <div id="categories">
@@ -24,10 +24,12 @@ export default function Categories() {
             query={graphql`
                 query categoriesQuery {
                     allMarkdownRemark {
-                        nodes {
+                        edges {
+                          node {
                             frontmatter {
-                                tags
+                              tags
                             }
+                          }
                         }
                     }
                 }
